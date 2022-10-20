@@ -1,8 +1,11 @@
+from typing import List
+
+
 class Deck:
     def __init__(self) -> None:
         pass
 
-    def __str__(self) -> str:
+    def __str__(self) -> List[str]:
         pass
 
     def shuffle(self) -> None:
