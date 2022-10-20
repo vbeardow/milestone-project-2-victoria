@@ -1,4 +1,5 @@
-from methods.card import *
+from blackjack.card import *
+
 
 def test_card_string():
     two_clubs = Card("Two", "Clubs")

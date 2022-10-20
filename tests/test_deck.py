@@ -1,4 +1,4 @@
-from methods.deck import *
+from blackjack.deck import *
 import random
 import pytest
 

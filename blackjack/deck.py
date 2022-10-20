@@ -1,5 +1,5 @@
 from typing import List
-from methods.card import Card
+from blackjack.card import Card
 
 
 class Deck:
