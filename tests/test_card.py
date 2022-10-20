@@ -1,4 +1,4 @@
-from blackjack.card import *
+from blackjack.card import Card
 
 
 def test_card_string():

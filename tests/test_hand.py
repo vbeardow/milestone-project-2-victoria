@@ -1,6 +1,6 @@
-from blackjack.card import Card
-from blackjack.hand import *
 import pytest
+from blackjack.card import Card
+from blackjack.hand import Hand
 
 
 @pytest.fixture

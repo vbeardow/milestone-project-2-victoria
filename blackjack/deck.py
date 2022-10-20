@@ -1,7 +1,3 @@
-from typing import List
-from blackjack.card import Card
-
-
 class Deck:
     def __init__(self) -> None:
         pass
@@ -12,5 +8,5 @@ class Deck:
     def shuffle(self) -> None:
         pass
 
-    def deal(self) -> List[Card]:
+    def deal(self) -> None:
         pass
