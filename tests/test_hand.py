@@ -12,6 +12,7 @@ def test_add_card(my_hand: Hand, new_card: Card):
     new_card = Card("Two", "Hearts")
     expected_hand = my_hand.append(new_card)
     assert my_hand.add_card(new_card) == expected_hand
+    assert my_hand.value == 2
 
 
 def test_add_ace(my_hand: Hand, new_card: Card):
