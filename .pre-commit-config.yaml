@@ -8,4 +8,4 @@ repos:
     hooks:
       - id: pylint
         args:
-        - --fail-under=7
+        - --fail-under=0
