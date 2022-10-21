@@ -31,3 +31,17 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
         else:
             raise Exception("Please enter either s or t")
         break
+
+
+def reveal_cards(my_hand, reveal_all=True) -> None:
+    """Reveal cards in the hand, printing the rank and value of the card
+
+    Args:
+        my_hand (_type_): Hand object representing a hand of cards
+        reveal_all (bool, optional): If true, reveals all cards in the hand. If false, will only reveal one card in the hand. Defaults to True.
+    """
+    if reveal_all:
+        for card in my_hand.cards:
+            print(card)
+    else:
+        print(my_hand.cards[0])

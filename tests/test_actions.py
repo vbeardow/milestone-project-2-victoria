@@ -1,6 +1,6 @@
 import pytest
 import sys
-from unittest.mock import patch
+from unittest.mock import patch, call
 from unittest.mock import MagicMock
 from blackjack.hand import Hand
 from blackjack.deck import Deck
@@ -47,7 +47,7 @@ def test_stick_is_printed(mock_print, my_hand: Hand, deck: Deck):
     """Test print output if user chooses to stick
 
     Args:
-        mock_print (_type_): mocking built in print function
+        mock_print (_type_): mock built in print function
         my_hand (Hand): Hand object representing a hand of cards
         deck (Deck): Deck object representing a deck of cards
     """
@@ -57,7 +57,7 @@ def test_stick_is_printed(mock_print, my_hand: Hand, deck: Deck):
 
 @patch("builtins.input", lambda *args: "t")
 @patch("blackjack.actions.twist")
-def test_twist_is_called(twist, my_hand, deck):
+def test_twist_is_called(twist, my_hand: Hand, deck: Deck):
     """Test twist function is called if user chooses to twist
 
     Args:
@@ -67,3 +67,23 @@ def test_twist_is_called(twist, my_hand, deck):
     """
     stick_or_twist(my_hand, deck)
     twist.assert_called_once_with(my_hand, deck)
+
+
+@patch("builtins.print")
+def test_reveal_one_card(mock_print, my_hand: Hand):
+    """Tests print output if reveal one card function is called
+
+    Args:
+        mock_print (_type_): mock built in print function
+        my_hand (Hand): Hand object representing a hand of cards
+    """
+    my_hand.cards = ["Two of Hearts", "Four of Spades"]
+    reveal_cards(my_hand, False)
+    mock_print.assert_called_once_with("Two of Hearts")
+
+
+@patch("builtins.print")
+def test_reveal_all_cards(mock_print, my_hand: Hand):
+    my_hand.cards = ["Two of Hearts", "Four of Spades"]
+    reveal_cards(my_hand, True)
+    mock_print.assert_has_calls([call("Two of Hearts"), call("Four of Spades")])
