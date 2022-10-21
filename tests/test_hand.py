@@ -3,16 +3,6 @@ from blackjack.card import Card
 from blackjack.hand import Hand
 
 
-@pytest.fixture
-def my_hand() -> Hand:
-    """Card hand object used for testing. Default is an empty hand
-
-    Returns:
-        Hand: A Hand object
-    """
-    return Hand()
-
-
 def test_add_card(my_hand: Hand):
     """Tests the size and value of the hand are correct after adding a card
 

@@ -2,16 +2,6 @@ import pytest
 from blackjack.deck import Deck
 
 
-@pytest.fixture
-def card_deck() -> Deck:
-    """Creates a card object
-
-    Returns:
-        Deck: An object representing an ordered deck of cards to test
-    """
-    return Deck()
-
-
 def test_deck_size(card_deck: Deck):
     """Tests the number of cards in the deck is 52"""
     assert len(card_deck.deck) == 52

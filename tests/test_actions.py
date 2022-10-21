@@ -3,17 +3,7 @@ import pytest
 from blackjack.hand import Hand
 from blackjack.deck import Deck
 from blackjack.deck import Card
-from blackjack.actions import *
-
-
-@pytest.fixture
-def my_hand() -> Hand:
-    return Hand()
-
-
-@pytest.fixture
-def deck() -> Deck:
-    return Deck()
+from blackjack.actions import twist, stick_or_twist, reveal_cards
 
 
 def test_twist(my_hand: Hand, deck: Deck):
