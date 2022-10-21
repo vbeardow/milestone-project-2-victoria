@@ -1,4 +1,7 @@
 import pytest
+import sys
+from unittest.mock import patch
+from unittest.mock import MagicMock
 from blackjack.hand import Hand
 from blackjack.deck import Deck
 from blackjack.actions import *
@@ -26,9 +29,21 @@ def test_twist(my_hand: Hand, deck: Deck):
     assert len(final_cards) == 1
 
 
-def test_stick_or_twist():
-    pass
+@patch("builtins.input", lambda *args: "x")
+def test_stick_or_twist_invalid_input(my_hand: Hand, deck: Deck):
+    with pytest.raises(Exception, match="Please enter either s or t"):
+        stick_or_twist(my_hand, deck)
 
 
-def test_reveal():
-    pass
+@patch("builtins.input", lambda *args: "s")
+@patch("builtins.print")
+def test_stick_is_printed(mock_print, my_hand: Hand, deck: Deck):
+    stick_or_twist(my_hand, deck)
+    mock_print.assert_called_once_with("Player has chosen to stick.")
+
+
+@patch("builtins.input", lambda *args: "t")
+@patch("blackjack.actions.twist")
+def test_twist_is_called(twist, my_hand, deck):
+    stick_or_twist(my_hand, deck)
+    twist.assert_called_once_with(my_hand, deck)
