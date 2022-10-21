@@ -1,9 +1,8 @@
-import pytest
-import sys
 from unittest.mock import patch, call
-from unittest.mock import MagicMock
+import pytest
 from blackjack.hand import Hand
 from blackjack.deck import Deck
+from blackjack.deck import Card
 from blackjack.actions import *
 
 
@@ -71,19 +70,25 @@ def test_twist_is_called(twist, my_hand: Hand, deck: Deck):
 
 @patch("builtins.print")
 def test_reveal_one_card(mock_print, my_hand: Hand):
-    """Tests print output if reveal one card function is called
+    """Tests print output if reveal one card is called
 
     Args:
         mock_print (_type_): mock built in print function
         my_hand (Hand): Hand object representing a hand of cards
     """
-    my_hand.cards = ["Two of Hearts", "Four of Spades"]
+    my_hand.cards = [Card("Two", "Hearts"), Card("Four", "Spades")]
     reveal_cards(my_hand, False)
     mock_print.assert_called_once_with("Two of Hearts")
 
 
 @patch("builtins.print")
 def test_reveal_all_cards(mock_print, my_hand: Hand):
-    my_hand.cards = ["Two of Hearts", "Four of Spades"]
+    """Tests print output if reveal all cards is called
+
+    Args:
+        mock_print (_type_): mock built in print function
+        my_hand (Hand): Hand object representing a hand of cards
+    """
+    my_hand.cards = [Card("Two", "Hearts"), Card("Four", "Spades")]
     reveal_cards(my_hand, True)
     mock_print.assert_has_calls([call("Two of Hearts"), call("Four of Spades")])

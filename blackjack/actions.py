@@ -42,6 +42,6 @@ def reveal_cards(my_hand, reveal_all=True) -> None:
     """
     if reveal_all:
         for card in my_hand.cards:
-            print(card)
+            print(str(card))
     else:
-        print(my_hand.cards[0])
+        print(str(my_hand.cards[0]))
