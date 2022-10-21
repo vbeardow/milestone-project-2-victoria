@@ -13,7 +13,8 @@ def twist(hand: Hand, deck: Deck) -> None:
 
 
 def stick_or_twist(hand: Hand, deck: Deck) -> None:
-    """Asks for user input whether they would like to stick (not add any cards to their hand) or twist (add one card to their hand)
+    """Asks for user input whether they would like to stick (not add any cards to their hand)
+    or twist (add one card to their hand)
 
     Args:
         hand (Hand): Hand object representing a hand of cards
@@ -38,7 +39,9 @@ def reveal_cards(my_hand, reveal_all=True) -> None:
 
     Args:
         my_hand (_type_): Hand object representing a hand of cards
-        reveal_all (bool, optional): If true, reveals all cards in the hand. If false, will only reveal one card in the hand. Defaults to True.
+        reveal_all (bool, optional): If true, reveals all cards in the hand.
+                                     If false, will only reveal one card in the hand.
+                                     Defaults to True.
     """
     if reveal_all:
         for card in my_hand.cards:
