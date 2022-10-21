@@ -1,6 +1,6 @@
+from unittest.mock import patch
 import pytest
 from blackjack.chips import Chips
-from unittest.mock import patch
 
 
 @pytest.fixture

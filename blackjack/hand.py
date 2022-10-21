@@ -1,3 +1,4 @@
+from typing import List
 from blackjack.card import Card
 
 
@@ -6,7 +7,7 @@ class Hand:
 
     def __init__(self) -> None:
         """Defines the attributes of cards, value and aces. Default is no cards in the hand."""
-        self.cards = []
+        self.cards: List[Card] = []
         self.value = 0
         self.aces = 0
 

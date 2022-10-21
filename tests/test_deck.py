@@ -23,7 +23,7 @@ def test_deck_string(card_deck: Deck):
     Args:
         card_deck (Deck): An ordered deck of 52 cards
     """
-    card_list = card_deck.__str__().split("\n")[:-1]
+    card_list = str(card_deck).split("\n")[:-1]
     assert card_list[0] == "Two of Hearts"
     assert card_list[-1] == "Ace of Clubs"
 
@@ -36,7 +36,7 @@ def test_shuffle(card_deck: Deck):
     """
     ordered_deck = Deck()
     card_deck.shuffle()
-    assert ordered_deck.__str__() != card_deck.__str__()
+    assert str(ordered_deck) != str(card_deck)
 
 
 def test_deal(card_deck: Deck):
@@ -47,5 +47,5 @@ def test_deal(card_deck: Deck):
     """
     new_deck = Deck()
     expected_cards = new_deck.deck.pop()
-    dealt_cards = card_deck.deal().__str__()
-    assert dealt_cards == expected_cards.__str__()
+    dealt_cards = str(card_deck.deal())
+    assert dealt_cards == str(expected_cards)

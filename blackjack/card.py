@@ -1,4 +1,4 @@
-from blackjack.constants import *
+from blackjack.constants import values
 
 
 class Card:
