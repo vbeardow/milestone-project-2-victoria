@@ -1,5 +1,6 @@
 from blackjack.hand import Hand
 from blackjack.deck import Deck
+import config
 
 
 def twist(hand: Hand, deck: Deck) -> None:
@@ -23,12 +24,14 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
     Raises:
         Exception: Raises an exception if the user does not input a valid input of "s" or "t"
     """
-    move = input("Stick or twist? Input s or t")
     while True:
+        move = input("Stick or twist? Input s or t")
+
         if move == "t":
             twist(hand, deck)
         elif move == "s":
             print("Player has chosen to stick.")
+            config.playing = False
         else:
             raise Exception("Please enter either s or t")
         break
@@ -43,6 +46,7 @@ def reveal_cards(my_hand: Hand, reveal_all=True) -> None:
                                      If false, will only reveal one card in the hand.
                                      Defaults to True.
     """
+
     if reveal_all:
         for card in my_hand.cards:
             print(str(card))

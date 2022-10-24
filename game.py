@@ -1,11 +1,12 @@
-from blackjack.actions import reveal_cards
+from blackjack.actions import reveal_cards, stick_or_twist
 from blackjack.chips import Chips
 from blackjack.deck import Deck
 from blackjack.hand import Hand
-
+import config
 
 while True:
-    print("Begin playing blackjack!")
+
+    print("Begin blackjack!")
 
     deck = Deck()
     deck.shuffle()
@@ -20,11 +21,15 @@ while True:
 
     print("Players cards:")
     reveal_cards(player_hand, reveal_all=True)
+    # print("Player value total:", player_hand.value)
 
     print("Dealer cards:")
     reveal_cards(dealer_hand, reveal_all=False)
 
     chips = Chips()
     chips.place_bet()
+
+    while config.playing:
+        stick_or_twist(player_hand, deck)
 
     break
