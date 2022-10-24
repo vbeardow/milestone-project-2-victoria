@@ -14,8 +14,8 @@ def my_hand() -> Hand:
     return Hand()
 
 
-@pytest.fixture(scope="module")
-def deck() -> Deck:
+@pytest.fixture(scope="class")
+def card_deck() -> Deck:
     """Create deck object for testing
 
     Returns:
@@ -24,11 +24,10 @@ def deck() -> Deck:
     return Deck()
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="class")
 def chips():
-    """Create chips object for testing
-
+    """Create chips class for testing
     Returns:
-        _type_: A Chips object representing a players betting chips
+        _type_: an instance of a class of chips
     """
     return Chips()
