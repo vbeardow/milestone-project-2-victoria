@@ -1,4 +1,8 @@
-def player_win(chips) -> None:
+from blackjack.chips import Chips
+from blackjack.hand import Hand
+
+
+def player_win(chips: Chips) -> None:
     """Print result if player wins and add chips to players chips
 
     Args:
@@ -8,7 +12,7 @@ def player_win(chips) -> None:
     print("Player wins! Dealer loses.")
 
 
-def player_lose(chips) -> None:
+def player_lose(chips: Chips) -> None:
     """Print result if player loses and remove chips from players chips
 
     Args:
@@ -16,3 +20,30 @@ def player_lose(chips) -> None:
     """
     chips.lose_bet()
     print("Player loses! Dealer wins.")
+
+
+def player_bust(chips: Chips) -> None:
+    """Print result if player goes bust and remove chips from players chips
+
+    Args:
+        chips (Chips): Chips object represernting the player's betting chips
+    """
+    chips.lose_bet()
+    print("Player bust! Dealer wins.")
+
+
+def determine_winner(player_hand: Hand, dealer_hand: Hand, chips: Chips) -> None:
+    """Determine the winner of the game. The player wins if their hand is larger than the
+    dealers or the dealer's hand is larger than 21 (bust)
+
+    Args:
+        player_hand (Hand): Hand object representing the player's hand
+        dealer_hand (Hand): Hand object representing the dealer's hand
+        chips (Chips): Chips object representing the player's betting chips
+    """
+    if dealer_hand.value > 21:
+        player_win(chips)
+    elif player_hand.value < dealer_hand.value:
+        player_lose(chips)
+    elif player_hand.value > dealer_hand.value:
+        player_win(chips)
