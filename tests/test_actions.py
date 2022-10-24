@@ -3,7 +3,8 @@ import pytest
 from blackjack.hand import Hand
 from blackjack.deck import Deck
 from blackjack.deck import Card
-from blackjack.actions import twist, stick_or_twist, reveal_cards
+from blackjack.actions import continue_playing, twist, stick_or_twist, reveal_cards
+import config
 
 
 def test_twist(my_hand: Hand, card_deck: Deck):
@@ -82,3 +83,26 @@ def test_reveal_all_cards(mock_print, my_hand: Hand):
     my_hand.cards = [Card("Two", "Hearts"), Card("Four", "Spades")]
     reveal_cards(my_hand, True)
     mock_print.assert_has_calls([call("Two of Hearts"), call("Four of Spades")])
+
+
+@patch("builtins.input", lambda *args: "y")
+def test_continue_playing_yes():
+    """Asserts that config.playing is true after continue_playing is called and the user input "y" """
+    config.playing = False
+    continue_playing()
+    assert config.playing is True
+
+
+@patch("builtins.input", lambda *args: "n")
+def test_continue_playing_no():
+    """Asserts that config.game_on is false after continue_playing is called and the user input "n" """
+    config.game_on = True
+    continue_playing()
+    assert config.game_on is False
+
+
+@patch("builtins.input", lambda *args: "x")
+def test_continue_playing_invalid_argument():
+    """Asserts that and exception is raised if continue_playing is called and the user inputs an invalid value"""
+    # assert exception is raised
+    pass
