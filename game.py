@@ -1,4 +1,4 @@
-from blackjack.actions import reveal_cards, stick_or_twist
+from blackjack.actions import continue_playing, reveal_cards, stick_or_twist
 from blackjack.chips import Chips
 from blackjack.deck import Deck
 from blackjack.hand import Hand
@@ -7,7 +7,7 @@ import config
 
 player_chips = Chips()
 
-while True:
+while config.game_on:
 
     print("Begin blackjack!")
 
@@ -62,9 +62,4 @@ while True:
     print(f"Player has a total of {player_chips.total} chips remaining")
 
     # Ask if player wants to continue play
-    play_on = input("Play again? y or n")
-    if play_on == "y":
-        config.playing = True
-        continue
-    else:
-        break
+    continue_playing()
