@@ -31,5 +31,10 @@ while True:
 
     while config.playing:
         stick_or_twist(player_hand, deck)
+        print("Player value total:", player_hand.value)
 
+        if player_hand.value >= 21:
+            config.playing = False
+        else:
+            continue
     break
