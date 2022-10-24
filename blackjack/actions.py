@@ -25,7 +25,7 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
         Exception: Raises an exception if the user does not input a valid input of "s" or "t"
     """
     while True:
-        move = input("Stick or twist? Input s or t")
+        move = input("Stick or twist? Input s or t: ")
 
         if move == "t":
             twist(hand, deck)
@@ -52,3 +52,21 @@ def reveal_cards(my_hand: Hand, reveal_all=True) -> None:
             print(str(card))
     else:
         print(str(my_hand.cards[0]))
+
+
+def continue_playing() -> None:
+    """Ask player if they want to continue playing (input y or n)
+
+    Raises:
+        Exception: Exception raised when user has entered something other than y or n.
+    """
+    while True:
+        play = input("Play again? Input y or n: ")
+        if play == "y":
+            config.playing = True
+        elif play == "n":
+            config.game_on = False
+            break
+        else:
+            raise Exception("Please enter either y or n")
+        break
