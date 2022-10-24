@@ -41,7 +41,6 @@ while config.game_on:
         # Ask the player if they want to stick or twist
         stick_or_twist(player_hand, deck)
         print("Player value total:", player_hand.value)
-        print(f"Player has {player_hand.aces} aces")
 
         # Exist play if the player is bust
         if player_hand.value > 21:
@@ -59,7 +58,10 @@ while config.game_on:
         # Determine the winner
         determine_winner(player_hand, dealer_hand, player_chips)
 
-    print(f"Player has a total of {player_chips.total} chips remaining")
-
-    # Ask if player wants to continue play
-    continue_playing()
+    if player_chips.total == 0:
+        print("You have no chips left! Game over.")
+        config.game_on = False
+    else:
+        print(f"Player has a total of {player_chips.total} chips remaining")
+        # Ask if player wants to continue play
+        continue_playing()

@@ -61,7 +61,7 @@ def continue_playing() -> None:
         Exception: Exception raised when user has entered something other than y or n.
     """
     while True:
-        play = input("Play again? Input y or n: ")
+        play = input("Keep playing? Input y or n: ")
         if play == "y":
             config.playing = True
         elif play == "n":
