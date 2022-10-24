@@ -1,7 +1,8 @@
 from unittest.mock import patch
-from blackjack.results import *
-from blackjack.chips import *
 import pytest
+from blackjack.results import player_win, player_lose, player_bust, determine_winner
+from blackjack.chips import Chips
+from blackjack.hand import Hand
 
 
 @pytest.fixture
@@ -80,7 +81,8 @@ def test_determine_winner_dealer_bust(
 def test_determine_winner_player_wins(
     mock_player_win, player_hand: Hand, dealer_hand: Hand, chips: Chips
 ):
-    """Test that determine winner will call player_win if the total value of the player's hand is more than the dealer's hand
+    """Test that determine winner will call player_win if the
+    total value of the player's hand is more than the dealer's hand
 
     Args:
         mock_player_win (_type_): mock player win function
@@ -98,7 +100,8 @@ def test_determine_winner_player_wins(
 def test_determine_winner_player_loses(
     mock_player_lose, player_hand: Hand, dealer_hand: Hand, chips: Chips
 ):
-    """Test that determine winner will call player_lose if the total value of the player's hand is less than the dealer's hand
+    """Test that determine winner will call player_lose if the
+    total value of the player's hand is less than the dealer's hand
 
     Args:
         mock_player_win (_type_): mock player win function
