@@ -1,16 +1,6 @@
+from unittest.mock import patch
 import pytest
 from blackjack.chips import Chips
-from unittest.mock import patch
-
-
-@pytest.fixture
-def chips():
-    """Create chips class for testing
-
-    Returns:
-        _type_: an instance of a class of chips
-    """
-    return Chips()
 
 
 def test_win_bet(chips: Chips):

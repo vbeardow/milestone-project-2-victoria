@@ -1,6 +1,5 @@
-from typing import List
 import random
-from blackjack.constants import *
+from blackjack.constants import suits, ranks
 from blackjack.card import Card
 
 
