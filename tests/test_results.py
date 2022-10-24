@@ -110,3 +110,24 @@ def test_determine_winner_player_loses(
     dealer_hand.value = 21
     determine_winner(player_hand, dealer_hand, chips)
     mock_player_lose.assert_called_once()
+
+
+@patch("builtins.print")
+@patch("blackjack.results.player_lose")
+def test_determine_winner_draw_player_loses(
+    mock_player_lose, mock_print, player_hand: Hand, dealer_hand: Hand, chips: Chips
+):
+    """Test that determine winner will call player_lose if the total value of the player's hand is equal to the dealer's hand
+
+    Args:
+        mock_print(_type_): mock built in print function
+        mock_player_win (_type_): mock player win function
+        player_hand (Hand): Hand object representing the player's hand
+        dealer_hand (Hand): Hand object representing the dealer's hand
+        chips (Chips): Chips object representing the player's betting chips
+    """
+    player_hand.value = 20
+    dealer_hand.value = 20
+    determine_winner(player_hand, dealer_hand, chips)
+    mock_print.assert_called_once_with("Draw!")
+    mock_player_lose.assert_called_once()

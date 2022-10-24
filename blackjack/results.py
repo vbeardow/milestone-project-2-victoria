@@ -41,9 +41,10 @@ def determine_winner(player_hand: Hand, dealer_hand: Hand, chips: Chips) -> None
         dealer_hand (Hand): Hand object representing the dealer's hand
         chips (Chips): Chips object representing the player's betting chips
     """
-    if dealer_hand.value > 21:
+    if dealer_hand.value > 21 or player_hand.value > dealer_hand.value:
         player_win(chips)
     elif player_hand.value < dealer_hand.value:
         player_lose(chips)
-    elif player_hand.value > dealer_hand.value:
-        player_win(chips)
+    elif player_hand.value == dealer_hand.value:
+        print("Draw!")
+        player_lose(chips)
