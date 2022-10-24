@@ -22,7 +22,7 @@ class Chips:
             Exception: Input bet is higher than total
         """
         try:
-            self.bet = int(input("Place your bet"))
+            self.bet = int(input("Place your bet: "))
         except:
             raise ValueError("Please enter an integer")
         else:
