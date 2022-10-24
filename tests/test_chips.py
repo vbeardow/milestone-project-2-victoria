@@ -36,25 +36,25 @@ def test_place_bet(chips: Chips):
     assert chips.bet == 12
 
 
-@patch("builtins.input", lambda *args: "twelve")
-def test_place_bet_non_integer(chips: Chips):
-    """Tests that a value error is thrown if the bet the user inputs is not an integer value
+# @patch("builtins.input", lambda *args: "twelve")
+# def test_place_bet_non_integer(chips: Chips):
+#     """Tests that a value error is thrown if the bet the user inputs is not an integer value
 
-    Args:
-        chips (Chips): A chips class with a total of 100
-    """
-    with pytest.raises(ValueError, match="Please enter an integer"):
-        chips.place_bet()
+#     Args:
+#         chips (Chips): A chips class with a total of 100
+#     """
+#     with pytest.raises(ValueError, match="Please enter an integer"):
+#         chips.place_bet()
 
 
-@patch("builtins.input", lambda *args: 110)
-def test_place_bet_exceeds_total(chips: Chips):
-    """Tests that an exception is thrown if the bet the user inputs exceeds the total
+# @patch("builtins.input", lambda *args: 110)
+# def test_place_bet_exceeds_total(chips: Chips):
+#     """Tests that an exception is thrown if the bet the user inputs exceeds the total
 
-    Args:
-        chips (Chips): A chips class with a total of 100
-    """
-    with pytest.raises(
-        Exception, match="You can not place a bet higher than your current total."
-    ):
-        chips.place_bet()
+#     Args:
+#         chips (Chips): A chips class with a total of 100
+#     """
+#     with pytest.raises(
+#         Exception, match="You can not place a bet higher than your current total."
+#     ):
+#         chips.place_bet()
