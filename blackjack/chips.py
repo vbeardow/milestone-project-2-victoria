@@ -28,6 +28,8 @@ class Chips:
                 print("Please enter an integer")
             else:
                 if self.bet > self.total:
-                    print("You can not place a bet higher than your current total.")
+                    print(
+                        f"You can not place a bet higher than your current total of {self.total}."
+                    )
                 else:
                     break
