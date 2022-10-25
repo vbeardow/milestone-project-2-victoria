@@ -3,8 +3,26 @@ import pytest
 from blackjack.hand import Hand
 from blackjack.deck import Deck
 from blackjack.deck import Card
-from blackjack.actions import continue_playing, twist, stick_or_twist, reveal_cards
+from blackjack.actions import (
+    continue_playing,
+    print_invalid_input,
+    twist,
+    stick_or_twist,
+    reveal_cards,
+)
 import game_config
+
+
+@patch("builtins.print")
+def test_print_invalid_input(mock_print):
+    """Test print_invalid_input prints correct invalid input statement
+    Args:
+        mock_print (_type_): mock built in print function
+    """
+    print_invalid_input(["x", "y", "z"])
+    mock_print.assert_called_once_with(
+        "Invalid input. Please enter one of the following options: ['x', 'y', 'z']."
+    )
 
 
 def test_twist(my_hand: Hand, card_deck: Deck):
@@ -20,9 +38,9 @@ def test_twist(my_hand: Hand, card_deck: Deck):
 
 
 @patch("builtins.input", side_effect=["x", "s"])
-@patch("builtins.print")
+@patch("blackjack.actions.print_invalid_input")
 def test_stick_or_twist_invalid_input(
-    mock_print, mock_input, my_hand: Hand, card_deck: Deck
+    mock_print_invalid, mock_input, my_hand: Hand, card_deck: Deck
 ):
     """Tests exception is raised if invalid input is provided to stick or twist request
 
@@ -31,7 +49,7 @@ def test_stick_or_twist_invalid_input(
         card_deck (Deck): Deck object representing a deck of cards
     """
     stick_or_twist(my_hand, card_deck)
-    mock_print.assert_called_once_with("Invalid input. Please enter either s or t.")
+    mock_print_invalid.assert_called_once_with(["s", "t"])
 
 
 @patch("builtins.input", lambda *args: "s")
@@ -105,8 +123,8 @@ def test_continue_playing_no():
 
 
 @patch("builtins.input", side_effect=["x", "n"])
-@patch("builtins.print")
-def test_continue_playing_invalid_argument(mock_print, mock_input):
+@patch("blackjack.actions.print_invalid_input")
+def test_continue_playing_invalid_argument(mock_print_invalid, mock_input):
     """Asserts that and exception is raised if continue_playing is called and the user inputs an invalid value"""
     continue_playing()
-    mock_print.assert_called_once_with("Invalid input. Please enter either y or n.")
+    mock_print_invalid.assert_called_once_with(["y", "n"])
