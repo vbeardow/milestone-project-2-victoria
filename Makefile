@@ -1,5 +1,7 @@
 setup:
-	poetry install
+	pyenv local 3.10.8
+	pre-commit install
+	poetry shell
 
 run:
 	poetry run python game.py
