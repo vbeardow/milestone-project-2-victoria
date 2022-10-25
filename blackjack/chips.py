@@ -5,7 +5,8 @@ class Chips:
     """A class representing a players betting chips"""
 
     def __init__(self):
-        """Set the attributes of chips total to 100 and bet to 0. Do not allow bets higher than the total chips."""
+        """Set the attributes of chips total to 100 and bet to 0.
+        Do not allow bets higher than the total chips."""
         self.total = 100
         self.bet = 0
 
