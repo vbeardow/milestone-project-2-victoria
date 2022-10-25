@@ -1,6 +1,6 @@
 from blackjack.hand import Hand
 from blackjack.deck import Deck
-import config
+import game_config
 
 
 def twist(hand: Hand, deck: Deck) -> None:
@@ -31,7 +31,7 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
             twist(hand, deck)
         elif move == "s":
             print("Player has chosen to stick.")
-            config.playing = False
+            game_config.playing = False
         else:
             print("Invalid input. Please enter either s or t.")
         break
@@ -63,9 +63,9 @@ def continue_playing() -> None:
     while True:
         play = input("Keep playing? Input y or n: ")
         if play == "y":
-            config.playing = True
+            game_config.playing = True
         elif play == "n":
-            config.game_on = False
+            game_config.game_on = False
             break
         else:
             print("Invalid input. Please enter either y or n.")

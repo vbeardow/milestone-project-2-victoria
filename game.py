@@ -3,11 +3,11 @@ from blackjack.chips import Chips
 from blackjack.deck import Deck
 from blackjack.hand import Hand
 from blackjack.results import determine_winner, player_bust
-import config
+import game_config
 
 player_chips = Chips()
 
-while config.game_on:
+while game_config.game_on:
 
     print("Begin blackjack!")
 
@@ -37,7 +37,7 @@ while config.game_on:
     # Ask the player for their bet
     player_chips.place_bet()
 
-    while config.playing:
+    while game_config.playing:
         # Ask the player if they want to stick or twist
         stick_or_twist(player_hand, deck)
         print("Player value total:", player_hand.value)
@@ -45,7 +45,7 @@ while config.game_on:
         # Exist play if the player is bust
         if player_hand.value > 21:
             player_bust(player_chips)
-            config.playing = False
+            game_config.playing = False
             break
 
     if player_hand.value <= 21:
@@ -60,7 +60,7 @@ while config.game_on:
 
     if player_chips.total == 0:
         print("You have no chips left! Game over.")
-        config.game_on = False
+        game_config.game_on = False
     else:
         print(f"Player has a total of {player_chips.total} chips remaining")
         # Ask if player wants to continue play
