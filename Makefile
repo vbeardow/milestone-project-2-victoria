@@ -1,8 +1,11 @@
 run:
 	poetry run python game.py
 
-unittest:
+test:
 	poetry run pytest
+
+test-cov:
+	pytest --cov=blackjack tests
 
 clean:
 	rm -rf __pycache__
