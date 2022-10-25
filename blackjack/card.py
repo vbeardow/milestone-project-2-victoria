@@ -1,6 +1,6 @@
 """Defines the class "Card" which represents a single card within a playing deck"""
 
-from blackjack.constants import values
+from blackjack.constants import values, ranks, suits
 
 
 class Card:
@@ -12,6 +12,8 @@ class Card:
             rank (str): rank or name of the card
             suit (str): suit of the card (Heart, Diamond, Spade or Club)
         """
+        assert rank in ranks
+        assert suit in suits
         self.rank = rank
         self.suit = suit
         self.value = values[rank]

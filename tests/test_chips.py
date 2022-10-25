@@ -44,6 +44,8 @@ def test_place_bet_non_integer(mock_print, mock_input, chips: Chips) -> None:
     """Tests that a value error is thrown if the bet the user inputs is not an integer value
 
     Args:
+        mock_print (_type_): mock built in print function
+        mock_input (_type_): mock built in input function
         chips (Chips): A chips class with a total of 100
     """
     chips.place_bet()
@@ -53,12 +55,30 @@ def test_place_bet_non_integer(mock_print, mock_input, chips: Chips) -> None:
 @patch("builtins.input", side_effect=[110, 12])
 @patch("builtins.print")
 def test_place_bet_exceeds_total(mock_print, mock_input, chips: Chips) -> None:
-    """Tests that correct print statement is called if the bet the user inputs exceeds the total
+    """Tests that correct print statement is called if the user inputs a bet that exceeds the total chips
 
     Args:
+        mock_print (_type_): mock built in print function
+        mock_input (_type_): mock built in input function
         chips (Chips): A chips class with a total of 100
     """
     chips.place_bet()
     mock_print.assert_called_once_with(
         f"You can not place a bet higher than your current total of {chips.total}."
+    )
+
+
+@patch("builtins.input", side_effect=[-10, 12])
+@patch("builtins.print")
+def test_negative_bet(mock_print, mock_input, chips: Chips) -> None:
+    """Tests that correct print statement is called if the user inputs a negative bet
+
+    Args:
+        mock_print (_type_): mock built in print function
+        mock_input (_type_): mock built in input function
+        chips (Chips): A chips class with a total of 100
+    """
+    chips.place_bet()
+    mock_print.assert_called_once_with(
+        "You can not place a negative bet, please try again."
     )

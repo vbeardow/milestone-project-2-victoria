@@ -34,5 +34,7 @@ class Chips:
                     print(
                         f"You can not place a bet higher than your current total of {self.total}."
                     )
+                elif self.bet < 0:
+                    print("You can not place a negative bet, please try again.")
                 else:
                     break
