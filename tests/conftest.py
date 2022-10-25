@@ -7,7 +7,7 @@ from blackjack.chips import Chips
 
 
 @pytest.fixture(scope="module")
-def my_hand() -> Hand:
+def player_hand() -> Hand:
     """Create hand object for testing
 
     Returns:

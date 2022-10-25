@@ -47,21 +47,21 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
         break
 
 
-def reveal_cards(my_hand: Hand, reveal_all=True) -> None:
+def reveal_cards(player_hand: Hand, reveal_all=True) -> None:
     """Reveal cards in the hand, printing the rank and value of the card
 
     Args:
-        my_hand (Hand): Hand object representing a hand of cards
+        player_hand (Hand): Hand object representing a hand of cards
         reveal_all (bool, optional): If true, reveals all cards in the hand.
                                      If false, will only reveal one card in the hand.
                                      Defaults to True.
     """
 
     if reveal_all:
-        for card in my_hand.cards:
+        for card in player_hand.cards:
             print(str(card))
     else:
-        print(str(my_hand.cards[0]))
+        print(str(player_hand.cards[0]))
 
 
 def continue_playing() -> None:

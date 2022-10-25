@@ -9,12 +9,12 @@ from blackjack.hand import Hand
 
 
 @pytest.fixture
-def player_hand():
-    return Hand()
-
-
-@pytest.fixture
 def dealer_hand():
+    """Create hand object for testing
+
+    Returns:
+        Hand: A hand object representing the dealer's hand of cards
+    """
     return Hand()
 
 

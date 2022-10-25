@@ -26,84 +26,84 @@ def test_print_invalid_input(mock_print):
     )
 
 
-def test_twist(my_hand: Hand, card_deck: Deck):
-    """Test that after twist the number of cards in my_hand is 1
+def test_twist(player_hand: Hand, card_deck: Deck):
+    """Test that after twist the number of cards in player_hand is 1
 
     Args:
-        my_hand (Hand): A hand of cards
+        player_hand (Hand): A hand of cards
         deck (Deck): A deck of cards
     """
-    twist(my_hand, card_deck)
-    final_cards = my_hand.cards
+    twist(player_hand, card_deck)
+    final_cards = player_hand.cards
     assert len(final_cards) == 1
 
 
 @patch("builtins.input", side_effect=["x", "s"])
 @patch("blackjack.actions.print_invalid_input")
 def test_stick_or_twist_invalid_input(
-    mock_print_invalid, mock_input, my_hand: Hand, card_deck: Deck
+    mock_print_invalid, mock_input, player_hand: Hand, card_deck: Deck
 ):
     """Tests print_invalid_input is called if invalid input is provided to stick or twist request
 
     Args:
-        my_hand (Hand): Hand object representing a hand of cards
+        player_hand (Hand): Hand object representing a hand of cards
         card_deck (Deck): Deck object representing a deck of cards
     """
-    stick_or_twist(my_hand, card_deck)
+    stick_or_twist(player_hand, card_deck)
     mock_print_invalid.assert_called_once_with(["s", "t"])
 
 
 @patch("builtins.input", lambda *args: "s")
 @patch("builtins.print")
-def test_stick_is_printed(mock_print, my_hand: Hand, card_deck: Deck):
+def test_stick_is_printed(mock_print, player_hand: Hand, card_deck: Deck):
     """Test print output if user chooses to stick
 
     Args:
         mock_print (_type_): mock built in print function
-        my_hand (Hand): Hand object representing a hand of cards
+        player_hand (Hand): Hand object representing a hand of cards
         card_deck (Deck): Deck object representing a deck of cards
     """
-    stick_or_twist(my_hand, card_deck)
+    stick_or_twist(player_hand, card_deck)
     mock_print.assert_called_once_with("Player has chosen to stick.")
 
 
 @patch("builtins.input", lambda *args: "t")
 @patch("blackjack.actions.twist")
-def test_twist_is_called(mock_twist, my_hand: Hand, card_deck: Deck):
+def test_twist_is_called(mock_twist, player_hand: Hand, card_deck: Deck):
     """Test twist function is called if user chooses to twist
 
     Args:
         twist (_type_): mock function of twist action
-        my_hand (Hand): Hand object representing a hand of cards
+        player_hand (Hand): Hand object representing a hand of cards
         card_deck (Deck): Deck object representing a deck of cards
     """
-    stick_or_twist(my_hand, card_deck)
-    mock_twist.assert_called_once_with(my_hand, card_deck)
+    stick_or_twist(player_hand, card_deck)
+    mock_twist.assert_called_once_with(player_hand, card_deck)
 
 
 @patch("builtins.print")
-def test_reveal_one_card(mock_print, my_hand: Hand):
+def test_reveal_one_card(mock_print, player_hand: Hand):
     """Tests print output if reveal one card is called
 
     Args:
         mock_print (_type_): mock built in print function
-        my_hand (Hand): Hand object representing a hand of cards
+        player_hand (Hand): Hand object representing a hand of cards
     """
-    my_hand.cards = [Card("Two", "Hearts"), Card("Four", "Spades")]
-    reveal_cards(my_hand, False)
+    player_hand.cards = [Card("Two", "Hearts"), Card("Four", "Spades")]
+    reveal_cards(player_hand, False)
     mock_print.assert_called_once_with("Two of Hearts")
 
 
 @patch("builtins.print")
-def test_reveal_all_cards(mock_print, my_hand: Hand):
+def test_reveal_all_cards(mock_print, player_hand: Hand):
     """Tests print output if reveal all cards is called
 
     Args:
         mock_print (_type_): mock built in print function
-        my_hand (Hand): Hand object representing a hand of cards
+        player_hand (Hand): Hand object representing a hand of cards
     """
-    my_hand.cards = [Card("Two", "Hearts"), Card("Four", "Spades")]
-    reveal_cards(my_hand, True)
+    player_hand.cards = [Card("Two", "Hearts"), Card("Four", "Spades")]
+    reveal_cards(player_hand, True)
     mock_print.assert_has_calls([call("Two of Hearts"), call("Four of Spades")])
 
 
