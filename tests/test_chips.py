@@ -50,7 +50,7 @@ def test_place_bet_non_integer(mock_print, mock_input, chips: Chips):
 @patch("builtins.input", side_effect=[110, 12])
 @patch("builtins.print")
 def test_place_bet_exceeds_total(mock_print, mock_input, chips: Chips):
-    """Tests that an exception is thrown if the bet the user inputs exceeds the total
+    """Tests that correct print statement is called if the bet the user inputs exceeds the total
 
     Args:
         chips (Chips): A chips class with a total of 100

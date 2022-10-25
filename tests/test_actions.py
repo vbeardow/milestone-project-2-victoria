@@ -42,7 +42,7 @@ def test_twist(my_hand: Hand, card_deck: Deck):
 def test_stick_or_twist_invalid_input(
     mock_print_invalid, mock_input, my_hand: Hand, card_deck: Deck
 ):
-    """Tests exception is raised if invalid input is provided to stick or twist request
+    """Tests print_invalid_input is called if invalid input is provided to stick or twist request
 
     Args:
         my_hand (Hand): Hand object representing a hand of cards
@@ -125,6 +125,6 @@ def test_continue_playing_no():
 @patch("builtins.input", side_effect=["x", "n"])
 @patch("blackjack.actions.print_invalid_input")
 def test_continue_playing_invalid_argument(mock_print_invalid, mock_input):
-    """Asserts that and exception is raised if continue_playing is called and the user inputs an invalid value"""
+    """Tests print_invalid_input is called if continue_playing is called and the user inputs an invalid value"""
     continue_playing()
     mock_print_invalid.assert_called_once_with(["y", "n"])

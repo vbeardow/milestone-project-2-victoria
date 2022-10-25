@@ -19,7 +19,6 @@ class Chips:
 
         Raises:
             ValueError: Input bet is not an integer
-            Exception: Input bet is higher than total
         """
         while True:
             try:
