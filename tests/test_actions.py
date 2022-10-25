@@ -19,16 +19,19 @@ def test_twist(my_hand: Hand, card_deck: Deck):
     assert len(final_cards) == 1
 
 
-@patch("builtins.input", lambda *args: "x")
-def test_stick_or_twist_invalid_input(my_hand: Hand, card_deck: Deck):
+@patch("builtins.input", side_effect=["x", "s"])
+@patch("builtins.print")
+def test_stick_or_twist_invalid_input(
+    mock_print, mock_input, my_hand: Hand, card_deck: Deck
+):
     """Tests exception is raised if invalid input is provided to stick or twist request
 
     Args:
         my_hand (Hand): Hand object representing a hand of cards
         card_deck (Deck): Deck object representing a deck of cards
     """
-    with pytest.raises(Exception, match="Please enter either s or t"):
-        stick_or_twist(my_hand, card_deck)
+    stick_or_twist(my_hand, card_deck)
+    mock_print.assert_called_once_with("Invalid input. Please enter either s or t.")
 
 
 @patch("builtins.input", lambda *args: "s")
@@ -101,8 +104,9 @@ def test_continue_playing_no():
     assert config.game_on is False
 
 
-@patch("builtins.input", lambda *args: "x")
-def test_continue_playing_invalid_argument():
+@patch("builtins.input", side_effect=["x", "n"])
+@patch("builtins.print")
+def test_continue_playing_invalid_argument(mock_print, mock_input):
     """Asserts that and exception is raised if continue_playing is called and the user inputs an invalid value"""
-    # assert exception is raised
-    pass
+    continue_playing()
+    mock_print.assert_called_once_with("Invalid input. Please enter either y or n.")

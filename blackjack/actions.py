@@ -33,7 +33,7 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
             print("Player has chosen to stick.")
             config.playing = False
         else:
-            raise Exception("Please enter either s or t")
+            print("Invalid input. Please enter either s or t.")
         break
 
 
@@ -68,5 +68,5 @@ def continue_playing() -> None:
             config.game_on = False
             break
         else:
-            raise Exception("Please enter either y or n")
+            print("Invalid input. Please enter either y or n.")
         break
