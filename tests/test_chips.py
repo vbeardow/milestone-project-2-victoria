@@ -1,3 +1,5 @@
+"""Tests the class Chips, the associated methods and attributes"""
+
 from unittest.mock import patch
 from blackjack.chips import Chips
 

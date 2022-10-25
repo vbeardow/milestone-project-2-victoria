@@ -1,4 +1,6 @@
-import pytest
+"""Tests the class Deck, the associated methods and attributes"""
+
+
 from blackjack.deck import Deck
 
 

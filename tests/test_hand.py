@@ -1,4 +1,6 @@
-import pytest
+"""Tests the class Hand, the associated methods and attributes"""
+
+
 from blackjack.card import Card
 from blackjack.hand import Hand
 

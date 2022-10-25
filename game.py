@@ -1,3 +1,8 @@
+"""
+Compiles the modules for the game blackjack into a single game file. 
+
+Run the command "make run" to play the game blackjack.
+"""
 from blackjack.actions import continue_playing, reveal_cards, stick_or_twist
 from blackjack.chips import Chips
 from blackjack.deck import Deck

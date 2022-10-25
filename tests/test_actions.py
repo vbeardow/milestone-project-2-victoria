@@ -1,3 +1,5 @@
+"""Tests the game actions for the blackjack game"""
+
 from unittest.mock import patch, call
 from blackjack.hand import Hand
 from blackjack.deck import Deck

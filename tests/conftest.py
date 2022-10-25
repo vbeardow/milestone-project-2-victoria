@@ -1,3 +1,5 @@
+"""Creates fixtures that are repeatedly used throughout tests"""
+
 import pytest
 from blackjack.hand import Hand
 from blackjack.deck import Deck

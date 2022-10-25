@@ -1,3 +1,5 @@
+"""Tests the class Card, the associated methods and attributes"""
+
 from blackjack.card import Card
 
 

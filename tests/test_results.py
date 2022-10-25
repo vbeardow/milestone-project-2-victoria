@@ -1,3 +1,6 @@
+"""Tests the results functions for the game blackjack"""
+
+
 from unittest.mock import patch
 import pytest
 from blackjack.results import player_win, player_lose, player_bust, determine_winner
