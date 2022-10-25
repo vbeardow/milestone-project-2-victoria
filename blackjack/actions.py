@@ -37,9 +37,9 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
     while True:
         move = input("Stick or twist? Input s or t: ")
 
-        if move == "t":
+        if move.lower() == "t":
             twist(hand, deck)
-        elif move == "s":
+        elif move.lower() == "s":
             print("Player has chosen to stick.")
             game_config.playing = False
         else:
@@ -69,10 +69,10 @@ def continue_playing() -> None:
     while True:
         play = input("Keep playing? Input y or n: ")
 
-        if play == "y":
+        if play.lower() == "y":
             game_config.playing = True
             break
-        elif play == "n":
+        elif play.lower() == "n":
             game_config.game_on = False
             break
         else:
