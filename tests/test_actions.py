@@ -1,5 +1,4 @@
 from unittest.mock import patch, call
-import pytest
 from blackjack.hand import Hand
 from blackjack.deck import Deck
 from blackjack.deck import Card
