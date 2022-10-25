@@ -10,6 +10,7 @@ packages = [{include = "milestone_project_2_victoria"}]
 python = "^3.10"
 pylint = "^2.15.5"
 black = "^22.10.0"
+mypy = "^0.982"
 
 
 [build-system]
