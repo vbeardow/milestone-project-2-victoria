@@ -19,14 +19,16 @@ class Chips:
 
         Raises:
             ValueError: Input bet is not an integer
-            Exception: Input bet is higher than total
         """
-        try:
-            self.bet = int(input("Place your bet"))
-        except:
-            raise ValueError("Please enter an integer")
-        else:
-            if self.bet > self.total:
-                raise Exception(
-                    "You can not place a bet higher than your current total."
-                )
+        while True:
+            try:
+                self.bet = int(input("Place your bet: "))
+            except ValueError:
+                print("Please enter an integer")
+            else:
+                if self.bet > self.total:
+                    print(
+                        f"You can not place a bet higher than your current total of {self.total}."
+                    )
+                else:
+                    break
