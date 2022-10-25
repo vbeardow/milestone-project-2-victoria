@@ -1,7 +1,6 @@
 """Defines game actions for the game blackjack"""
 
 from typing import List
-from xmlrpc.client import Boolean
 from blackjack.hand import Hand
 from blackjack.deck import Deck
 import game_config
@@ -48,7 +47,7 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
         break
 
 
-def reveal_cards(player_hand: Hand, reveal_all: Boolean = True) -> None:
+def reveal_cards(player_hand: Hand, reveal_all: bool = True) -> None:
     """Reveal cards in the hand, printing the rank and value of the card
 
     Args:
