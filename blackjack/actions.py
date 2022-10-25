@@ -3,7 +3,7 @@
 from typing import List
 from blackjack.hand import Hand
 from blackjack.deck import Deck
-import game_config
+import blackjack.game_config as game_config
 
 
 def print_invalid_input(options: List[str]) -> None:

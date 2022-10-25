@@ -11,7 +11,7 @@ from blackjack.actions import (
     stick_or_twist,
     reveal_cards,
 )
-import game_config
+import blackjack.game_config as game_config
 
 
 @patch("builtins.print")
@@ -120,7 +120,6 @@ def test_continue_playing_yes() -> None:
 def test_continue_playing_no() -> None:
     """Asserts that config.game_on is false after continue_playing
     is called and the user inputs "n" """
-    game_config.game_on = True
     continue_playing()
     assert game_config.game_on is False
 

@@ -1,6 +1,7 @@
 """Defines the methods which determine and act on the result of the game blackjack"""
 from blackjack.chips import Chips
 from blackjack.hand import Hand
+import blackjack.game_config as game_config
 
 
 def player_win(chips: Chips) -> None:
@@ -30,6 +31,7 @@ def player_bust(chips: Chips) -> None:
         chips (Chips): Chips object represernting the player's betting chips
     """
     chips.lose_bet()
+    game_config.playing = False
     print("Player bust! Dealer wins.")
 
 
