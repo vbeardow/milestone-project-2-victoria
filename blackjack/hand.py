@@ -1,3 +1,5 @@
+"""Defines the class "Hand" which represents a player's hand of cards"""
+
 from typing import List
 from blackjack.card import Card
 

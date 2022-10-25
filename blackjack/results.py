@@ -1,3 +1,4 @@
+"""Defines the methods which determine and act on the result of the game blackjack"""
 from blackjack.chips import Chips
 from blackjack.hand import Hand
 

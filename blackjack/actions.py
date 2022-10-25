@@ -1,3 +1,5 @@
+"""Defines game actions for the game blackjack"""
+
 from typing import List
 from blackjack.hand import Hand
 from blackjack.deck import Deck

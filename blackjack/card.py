@@ -1,3 +1,5 @@
+"""Defines the class "Card" which represents a single card within a playing deck"""
+
 from blackjack.constants import values
 
 

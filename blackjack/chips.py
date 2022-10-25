@@ -1,3 +1,6 @@
+"""Defines the class "Chips" which represents a players betting chips"""
+
+
 class Chips:
     """A class representing a players betting chips"""
 
