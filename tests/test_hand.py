@@ -28,7 +28,8 @@ def test_add_ace(player_hand: Hand):
 
 
 def test_value_with_ace(player_hand: Hand):
-    """Tests that the value of cards is adjusted if the total value is above 21 and the hand includes at an ace
+    """Tests that the value of cards is adjusted if the total
+    value is above 21 and the hand includes at an ace
 
     Args:
         player_hand (Hand): Empty hand of cards

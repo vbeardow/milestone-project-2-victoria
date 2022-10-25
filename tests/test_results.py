@@ -2,20 +2,9 @@
 
 
 from unittest.mock import patch
-import pytest
 from blackjack.results import player_win, player_lose, player_bust, determine_winner
 from blackjack.chips import Chips
 from blackjack.hand import Hand
-
-
-@pytest.fixture
-def dealer_hand():
-    """Create hand object for testing
-
-    Returns:
-        Hand: A hand object representing the dealer's hand of cards
-    """
-    return Hand()
 
 
 @patch("builtins.print")
@@ -123,7 +112,8 @@ def test_determine_winner_player_loses(
 def test_determine_winner_draw_player_loses(
     mock_player_lose, mock_print, player_hand: Hand, dealer_hand: Hand, chips: Chips
 ):
-    """Test that determine winner will call player_lose if the total value of the player's hand is equal to the dealer's hand
+    """Test that determine winner will call player_lose if the total
+    value of the player's hand is equal to the dealer's hand
 
     Args:
         mock_print(_type_): mock built in print function

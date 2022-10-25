@@ -28,7 +28,8 @@ def test_lose_bet(chips: Chips):
 
 @patch("builtins.input", lambda *args: 12)
 def test_place_bet(chips: Chips):
-    """Tests that if the function place_bet is called, the property bet of the chips is equal to the user input
+    """Tests that if the function place_bet is called,
+    the property bet of the chips is equal to the user input
 
     Args:
         chips (Chips): A chips class with a total of 100

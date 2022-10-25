@@ -109,7 +109,8 @@ def test_reveal_all_cards(mock_print, player_hand: Hand):
 
 @patch("builtins.input", lambda *args: "y")
 def test_continue_playing_yes():
-    """Asserts that config.playing is true after continue_playing is called and the user input "y" """
+    """Asserts that config.playing is true after continue_playing
+    is called and the user input "y" """
     game_config.playing = False
     continue_playing()
     assert game_config.playing is True
@@ -117,7 +118,8 @@ def test_continue_playing_yes():
 
 @patch("builtins.input", lambda *args: "n")
 def test_continue_playing_no():
-    """Asserts that config.game_on is false after continue_playing is called and the user input "n" """
+    """Asserts that config.game_on is false after continue_playing
+    is called and the user inputs "n" """
     game_config.game_on = True
     continue_playing()
     assert game_config.game_on is False
@@ -126,6 +128,7 @@ def test_continue_playing_no():
 @patch("builtins.input", side_effect=["x", "n"])
 @patch("blackjack.actions.print_invalid_input")
 def test_continue_playing_invalid_argument(mock_print_invalid, mock_input):
-    """Tests print_invalid_input is called if continue_playing is called and the user inputs an invalid value"""
+    """Tests print_invalid_input is called if continue_playing
+    is called and the user inputs an invalid value"""
     continue_playing()
     mock_print_invalid.assert_called_once_with(["y", "n"])

@@ -16,6 +16,16 @@ def player_hand() -> Hand:
     return Hand()
 
 
+@pytest.fixture(scope="module")
+def dealer_hand() -> Hand:
+    """Create hand object for testing
+
+    Returns:
+        Hand: A hand object representing a hand of cards
+    """
+    return Hand()
+
+
 @pytest.fixture(scope="class")
 def card_deck() -> Deck:
     """Create deck object for testing
