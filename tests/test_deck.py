@@ -4,12 +4,12 @@
 from blackjack.deck import Deck
 
 
-def test_deck_size(card_deck: Deck):
+def test_deck_size(card_deck: Deck) -> None:
     """Tests the number of cards in the deck is 52"""
     assert len(card_deck.deck) == 52
 
 
-def test_deck_string(card_deck: Deck):
+def test_deck_string(card_deck: Deck) -> None:
     """Tests the string of first and last cards in an ordered deck
 
     Args:
@@ -20,7 +20,7 @@ def test_deck_string(card_deck: Deck):
     assert card_list[-1] == "Ace of Clubs"
 
 
-def test_shuffle(card_deck: Deck):
+def test_shuffle(card_deck: Deck) -> None:
     """Tests that the order of cards in the deck is not equal to the
     order of cards after the deck has been shuffled
 
@@ -32,7 +32,7 @@ def test_shuffle(card_deck: Deck):
     assert str(ordered_deck) != str(card_deck)
 
 
-def test_deal(card_deck: Deck):
+def test_deal(card_deck: Deck) -> None:
     """Tests a single card dealt from the deck
 
     Args:

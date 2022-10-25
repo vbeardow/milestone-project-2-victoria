@@ -9,7 +9,7 @@ from blackjack.hand import Hand
 
 @patch("builtins.print")
 @patch("blackjack.chips.Chips.win_bet")
-def test_player_win(mock_win_bet, mock_print, chips: Chips):
+def test_player_win(mock_win_bet, mock_print, chips: Chips) -> None:
     """Test print and win_bet are called correctly if player wins
 
     Args:
@@ -24,7 +24,7 @@ def test_player_win(mock_win_bet, mock_print, chips: Chips):
 
 @patch("builtins.print")
 @patch("blackjack.chips.Chips.lose_bet")
-def test_player_lose(mock_lose_bet, mock_print, chips: Chips):
+def test_player_lose(mock_lose_bet, mock_print, chips: Chips) -> None:
     """Test print and lose_bet are called correctly if player loses
 
     Args:
@@ -39,7 +39,7 @@ def test_player_lose(mock_lose_bet, mock_print, chips: Chips):
 
 @patch("builtins.print")
 @patch("blackjack.chips.Chips.lose_bet")
-def test_player_bust(mock_lose_bet, mock_print, chips: Chips):
+def test_player_bust(mock_lose_bet, mock_print, chips: Chips) -> None:
     """Test print and lose bet are called correctly if player is bust
 
     Args:
@@ -55,7 +55,7 @@ def test_player_bust(mock_lose_bet, mock_print, chips: Chips):
 @patch("blackjack.results.player_win")
 def test_determine_winner_dealer_bust(
     mock_player_win, player_hand: Hand, dealer_hand: Hand, chips: Chips
-):
+) -> None:
     """Tests that determine winner will call player_win if dealer hand is > 21
 
     Args:
@@ -72,7 +72,7 @@ def test_determine_winner_dealer_bust(
 @patch("blackjack.results.player_win")
 def test_determine_winner_player_wins(
     mock_player_win, player_hand: Hand, dealer_hand: Hand, chips: Chips
-):
+) -> None:
     """Test that determine winner will call player_win if the
     total value of the player's hand is more than the dealer's hand
 
@@ -91,7 +91,7 @@ def test_determine_winner_player_wins(
 @patch("blackjack.results.player_lose")
 def test_determine_winner_player_loses(
     mock_player_lose, player_hand: Hand, dealer_hand: Hand, chips: Chips
-):
+) -> None:
     """Test that determine winner will call player_lose if the
     total value of the player's hand is less than the dealer's hand
 
@@ -111,7 +111,7 @@ def test_determine_winner_player_loses(
 @patch("blackjack.results.player_lose")
 def test_determine_winner_draw_player_loses(
     mock_player_lose, mock_print, player_hand: Hand, dealer_hand: Hand, chips: Chips
-):
+) -> None:
     """Test that determine winner will call player_lose if the total
     value of the player's hand is equal to the dealer's hand
 

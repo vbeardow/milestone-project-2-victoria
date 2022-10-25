@@ -37,7 +37,7 @@ def card_deck() -> Deck:
 
 
 @pytest.fixture(scope="class")
-def chips():
+def chips() -> Chips:
     """Create chips class for testing
     Returns:
         _type_: an instance of a class of chips
