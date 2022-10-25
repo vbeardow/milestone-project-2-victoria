@@ -1,3 +1,6 @@
+setup:
+	poetry install
+
 run:
 	poetry run python game.py
 

@@ -8,6 +8,8 @@ packages = [{include = "milestone_project_2_victoria"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pylint = "^2.15.5"
+black = "^22.10.0"
 
 
 [build-system]
