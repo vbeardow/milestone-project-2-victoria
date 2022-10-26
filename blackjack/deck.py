@@ -1,3 +1,5 @@
+"""Defines the class "Deck" which represents a deck of 52 playing cards"""
+
 import random
 from blackjack.constants import suits, ranks
 from blackjack.card import Card

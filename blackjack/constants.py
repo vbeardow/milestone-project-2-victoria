@@ -1,3 +1,5 @@
+"""Defines the constants suits, ranks and values related to deck of cards"""
+
 suits = ("Hearts", "Diamonds", "Spades", "Clubs")
 ranks = (
     "Two",

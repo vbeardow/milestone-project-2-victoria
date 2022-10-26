@@ -1,8 +1,10 @@
+"""Tests the class Chips, the associated methods and attributes"""
+
 from unittest.mock import patch
 from blackjack.chips import Chips
 
 
-def test_win_bet(chips: Chips):
+def test_win_bet(chips: Chips) -> None:
     """Test the chips total increases if bet is won
 
     Args:
@@ -13,7 +15,7 @@ def test_win_bet(chips: Chips):
     assert chips.total == 100 + 10
 
 
-def test_lose_bet(chips: Chips):
+def test_lose_bet(chips: Chips) -> None:
     """_summary_
 
     Args:
@@ -25,8 +27,9 @@ def test_lose_bet(chips: Chips):
 
 
 @patch("builtins.input", lambda *args: 12)
-def test_place_bet(chips: Chips):
-    """Tests that if the function place_bet is called, the property bet of the chips is equal to the user input
+def test_place_bet(chips: Chips) -> None:
+    """Tests that if the function place_bet is called,
+    the property bet of the chips is equal to the user input
 
     Args:
         chips (Chips): A chips class with a total of 100
@@ -37,7 +40,7 @@ def test_place_bet(chips: Chips):
 
 @patch("builtins.input", side_effect=["twelve", 12])
 @patch("builtins.print")
-def test_place_bet_non_integer(mock_print, mock_input, chips: Chips):
+def test_place_bet_non_integer(mock_print, mock_input, chips: Chips) -> None:
     """Tests that a value error is thrown if the bet the user inputs is not an integer value
 
     Args:
@@ -49,7 +52,7 @@ def test_place_bet_non_integer(mock_print, mock_input, chips: Chips):
 
 @patch("builtins.input", side_effect=[110, 12])
 @patch("builtins.print")
-def test_place_bet_exceeds_total(mock_print, mock_input, chips: Chips):
+def test_place_bet_exceeds_total(mock_print, mock_input, chips: Chips) -> None:
     """Tests that correct print statement is called if the bet the user inputs exceeds the total
 
     Args:
