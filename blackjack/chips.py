@@ -1,4 +1,5 @@
 """Defines the class "Chips" which represents a players betting chips"""
+import blackjack.game_config as game_config
 
 
 class Chips:
@@ -38,3 +39,16 @@ class Chips:
                     print("You can not place a negative bet, please try again.")
                 else:
                     break
+
+    def no_chips_remaining(self) -> bool:
+        """If no chips remaining, print statement to player and end game.
+
+        Returns:
+            bool: Returns true if there are no chips remaining. Returns false otherwise.
+        """
+        if self.total == 0:
+            print("You have no chips left! Game over.")
+            game_config.game_on = False
+            return True
+        else:
+            return False

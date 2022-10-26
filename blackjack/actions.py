@@ -47,7 +47,18 @@ def stick_or_twist(hand: Hand, deck: Deck) -> None:
         break
 
 
-def reveal_cards(player_hand: Hand, reveal_all: bool = True) -> None:
+def dealer_twist(hand: Hand, deck: Deck) -> None:
+    """Deal cards to the dealer up to a total hand value of 17
+
+    Args:
+        hand (Hand): Hand object representing the dealer's cards
+        deck (Deck): _description_
+    """
+    while hand.value <= 17:
+        twist(hand, deck)
+
+
+def reveal_cards(hand: Hand, reveal_all: bool = True) -> None:
     """Reveal cards in the hand, printing the rank and value of the card
 
     Args:
@@ -58,10 +69,10 @@ def reveal_cards(player_hand: Hand, reveal_all: bool = True) -> None:
     """
 
     if reveal_all:
-        for card in player_hand.cards:
+        for card in hand.cards:
             print(str(card))
     else:
-        print(str(player_hand.cards[0]))
+        print(str(hand.cards[0]))
 
 
 def continue_playing() -> None:

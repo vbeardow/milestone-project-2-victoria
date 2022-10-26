@@ -3,7 +3,13 @@ Compiles the modules for the game blackjack into a single game file.
 
 Run the command "make run" to play the game blackjack.
 """
-from blackjack.actions import continue_playing, reveal_cards, stick_or_twist, twist
+from blackjack.actions import (
+    continue_playing,
+    dealer_twist,
+    reveal_cards,
+    stick_or_twist,
+    twist,
+)
 from blackjack.chips import Chips
 from blackjack.deck import Deck
 from blackjack.hand import Hand
@@ -58,17 +64,15 @@ def play_game():
 
         if player_hand.value <= 21:
             # Deal cards to the dealer up to a value of 17
-            while dealer_hand.value <= 17:
-                twist(dealer_hand, deck)
+            dealer_twist(dealer_hand, deck)
 
             print("Dealer value total:", dealer_hand.value)
 
             # Determine the winner
             determine_winner(player_hand, dealer_hand, player_chips)
 
-        if player_chips.total == 0:
-            print("You have no chips left! Game over.")
-            game_config.game_on = False
+        if player_chips.no_chips_remaining():
+            break
         else:
             print(f"Player has a total of {player_chips.total} chips remaining")
             # Ask if player wants to continue play

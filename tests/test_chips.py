@@ -2,6 +2,7 @@
 
 from unittest.mock import patch
 from blackjack.chips import Chips
+import blackjack.game_config as game_config
 
 
 def test_win_bet(chips: Chips) -> None:
@@ -82,3 +83,52 @@ def test_negative_bet(mock_print, mock_input, chips: Chips) -> None:
     mock_print.assert_called_once_with(
         "You can not place a negative bet, please try again."
     )
+
+
+def test_no_chips_remaining_returns_false(chips: Chips) -> None:
+    """Tests that no_chips_remaining returns False if chips.total is larger than 0
+
+    Args:
+        chips (Chips): A Chips object representing a player's betting chips
+    """
+    chips.total = 100
+    output = chips.no_chips_remaining()
+    assert output is False
+
+
+def test_no_chips_remaining_returns_true(chips: Chips) -> None:
+    """Tests that no_chips_remaining returns True if chips.total is zero
+
+    Args:
+        chips (Chips): A Chips object representing a player's betting chips
+    """
+    chips.total = 0
+    output = chips.no_chips_remaining()
+    assert output is True
+
+
+@patch("builtins.print")
+def test_no_chips_remaining_prints_statement_to_player(
+    mock_print, chips: Chips
+) -> None:
+    """Tests that no_chips_remaining prints correct statement to user if chips.total is zero
+
+    Args:
+        mock_print (_type_): mock built in print function
+        chips (Chips): A Chips object representing a player's betting chips
+    """
+    chips.total = 0
+    chips.no_chips_remaining()
+    mock_print.assert_called_once_with("You have no chips left! Game over.")
+
+
+def test_no_chips_remaining_ends_game(chips: Chips) -> None:
+    """Tests that no_chips_remaining sets game_on to False and ends the game if chips.total is zero
+
+    Args:
+        mock_print (_type_): mock built in print function
+        chips (Chips): A Chips object representing a player's betting chips
+    """
+    chips.total = 0
+    chips.no_chips_remaining()
+    assert game_config.game_on is False

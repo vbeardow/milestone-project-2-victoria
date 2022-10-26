@@ -6,6 +6,7 @@ from blackjack.deck import Deck
 from blackjack.deck import Card
 from blackjack.actions import (
     continue_playing,
+    dealer_twist,
     print_invalid_input,
     twist,
     stick_or_twist,
@@ -36,6 +37,42 @@ def test_twist(player_hand: Hand, card_deck: Deck) -> None:
     twist(player_hand, card_deck)
     final_cards = player_hand.cards
     assert len(final_cards) == 1
+
+
+def test_dealer_twist_under_17(dealer_hand: Hand, card_deck: Deck) -> None:
+    """Test that if dealer hand value is less than 17, twist is called and hand value is larger than before twist
+
+    Args:
+        dealer_hand (Hand): Hand object representing a hand of cards
+        card_deck (Deck): Deck object representing a deck of cards
+    """
+    dealer_hand.value = 10
+    dealer_twist(dealer_hand, card_deck)
+    assert dealer_hand.value > 10
+
+
+def test_dealer_twist_equal_17(dealer_hand: Hand, card_deck: Deck) -> None:
+    """Test if dealer hand value is 17, twist is called and hand value is larger than before twist
+
+    Args:
+        dealer_hand (Hand): Hand object representing a hand of cards
+        card_deck (Deck): Deck object representing a deck of cards
+    """
+    dealer_hand.value = 17
+    dealer_twist(dealer_hand, card_deck)
+    assert dealer_hand.value > 17
+
+
+def test_dealer_twist_over_17(dealer_hand: Hand, card_deck: Deck) -> None:
+    """Test if dealer hand value is over 17, twist is called and hand value is unchanged after twist
+
+    Args:
+        dealer_hand (Hand): Hand object representing a hand of cards
+        card_deck (Deck): Deck object representing a deck of cards
+    """
+    dealer_hand.value = 18
+    dealer_twist(dealer_hand, card_deck)
+    assert dealer_hand.value == 18
 
 
 @patch("builtins.input", side_effect=["x", "s"])
