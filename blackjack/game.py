@@ -8,7 +8,6 @@ from blackjack.actions import (
     dealer_twist,
     reveal_cards,
     stick_or_twist,
-    twist,
 )
 from blackjack.chips import Chips
 from blackjack.deck import Deck

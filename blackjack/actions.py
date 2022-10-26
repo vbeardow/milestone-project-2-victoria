@@ -52,7 +52,7 @@ def dealer_twist(hand: Hand, deck: Deck) -> None:
 
     Args:
         hand (Hand): Hand object representing the dealer's cards
-        deck (Deck): _description_
+        deck (Deck): Deck object representing a deck of cards
     """
     while hand.value <= 17:
         twist(hand, deck)
