@@ -4,7 +4,7 @@ setup:
 	poetry shell
 
 run:
-	poetry run python game.py
+	poetry run python blackjack/game.py
 
 test:
 	poetry run pytest

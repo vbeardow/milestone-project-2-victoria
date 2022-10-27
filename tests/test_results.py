@@ -5,6 +5,7 @@ from unittest.mock import patch
 from blackjack.results import player_win, player_lose, player_bust, determine_winner
 from blackjack.chips import Chips
 from blackjack.hand import Hand
+import blackjack.game_config as game_config
 
 
 @patch("builtins.print")
@@ -50,6 +51,16 @@ def test_player_bust(mock_lose_bet, mock_print, chips: Chips) -> None:
     player_bust(chips)
     mock_print.assert_called_once_with("Player bust! Dealer wins.")
     mock_lose_bet.assert_called_once()
+
+
+def test_player_bust_stops_play(chips: Chips) -> None:
+    """Test that if the player goes bust, the game config playing is set to false (i.e. playing stops)
+
+    Args:
+        chips (Chips): Chips object representing the player's betting chips
+    """
+    player_bust(chips)
+    assert game_config.playing is False
 
 
 @patch("blackjack.results.player_win")
